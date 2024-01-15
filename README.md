@@ -13,3 +13,14 @@ command :
 ```
 npm install --save-dev vite
 ```
+
+# === the library to use ====
+npm i ol@5.0.0
+npm i ol-layerswitcher
+
+# === to Run project ====
+npm run dev
+
+# === to config Your Github ====
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
