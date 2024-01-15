@@ -21,7 +21,9 @@ npm i ol-layerswitcher
 ```
 
 # === to Run project ====
-```npm run dev```
+```
+npm run dev
+```
 
 # === to config Your Github ====
 ```
