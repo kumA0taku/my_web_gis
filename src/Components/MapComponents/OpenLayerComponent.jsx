@@ -34,14 +34,6 @@ const OpenLayerComponent = () => {
               visible: true,
               source: new OSM({}),
             }),
-            new TileLayer({
-              title: "Stamen Toner",
-              type: "base",
-              visible: false,
-              source: new Stamen({
-                layer: "toner",
-              }),
-            }),
           ],
         }),
         new LayerGroup({
