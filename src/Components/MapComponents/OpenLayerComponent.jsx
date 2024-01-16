@@ -5,6 +5,7 @@ import View from "ol/View";
 import { transform } from "ol/proj";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
+import Stamen from "ol/source/Stamen";
 import LayerGroup from "ol/layer/Group";
 import TileWMS from "ol/source/TileWMS";
 import LayerSwitcher from "ol-layerswitcher";
@@ -33,29 +34,26 @@ const OpenLayerComponent = () => {
               visible: true,
               source: new OSM({}),
             }),
+            new TileLayer({
+              title: "Stamen Toner",
+              type: "base",
+              visible: false,
+              source: new Stamen({
+                layer: "toner",
+              }),
+            }),
           ],
         }),
         new LayerGroup({
-          title: "Overlays",
+          title: "เครื่องมือ",
           fold: "open",
           layers: [
             new LayerGroup({
-              title: "Boundaries",
+              title: "เลือก Layer",
               fold: "open",
               layers: [
                 new TileLayer({
                   title: "Counties",
-                  visible: true,
-                  opacity: 0.5,
-                  source: new TileWMS({
-                    url: "https://ows.terrestris.de/osm/service",
-                    params: {
-                      LAYERS: "OSM-WMS",
-                    },
-                  }),
-                }),
-                new TileLayer({
-                  title: "States",
                   visible: false,
                   source: new TileWMS({
                     url: "https://ows.terrestris.de/osm/service",
@@ -64,7 +62,33 @@ const OpenLayerComponent = () => {
                     },
                   }),
                 }),
+                new TileLayer({
+                  title: "Ang-Thong",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/macro_provinces/wms?",
+                    params: {
+                      LAYERS: "macro_provinces:ang thong",
+                    },
+                  }),
+                }),
               ],
+            }),
+          ],
+        }),
+        new LayerGroup({
+          layers: [
+            new TileLayer({
+              title: "Ang-Thong",
+              visible: false,
+              source: new TileWMS({
+                attributions: "@geoserver",
+                url: "http://localhost:8080/geoserver/macro_provinces/wms?",
+                params: {
+                  LAYERS: "macro_provinces:ang thong",
+                },
+              }),
             }),
           ],
         }),
