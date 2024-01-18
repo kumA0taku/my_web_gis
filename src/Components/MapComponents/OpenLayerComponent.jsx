@@ -34,61 +34,270 @@ const OpenLayerComponent = () => {
               visible: true,
               source: new OSM({}),
             }),
-            new TileLayer({
-              title: "Stamen Toner",
-              type: "base",
-              visible: false,
-              source: new Stamen({
-                layer: "toner",
-              }),
-            }),
+            // add Stamen toner if You can.
+            // new TileLayer({
+            //   title: "Stamen Toner",
+            //   type: "base",
+            //   visible: false,
+            //   source: new Stamen({
+            //     layer: "toner",
+            //   }),
+            // }),
           ],
         }),
         new LayerGroup({
           title: "เครื่องมือ",
           fold: "open",
           layers: [
-            new LayerGroup({
-              title: "เลือก Layer",
+            //ขอบเขตประเทศต่างๆ
+            new TileLayer({
+              title: "ขอบเขตประเทศต่างๆ",
+              visible: false,
               fold: "open",
+              source: new TileWMS({
+                url: "https://ows.terrestris.de/osm/service",
+                params: {
+                  LAYERS: "OSM-WMS",
+                },
+              }),
+            }),
+
+            //Hospital - dont finish
+            new TileLayer({
+              title: "Hospital",
+              visible: false,
+              source: new TileWMS({
+                attributions: "@geoserver",
+                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                params: {
+                  LAYERS: "web_gis:gov_hos",
+                },
+              }),
+            }),
+
+            //region of thailand
+            new LayerGroup({
+              title: "ขอบเขตภูมิภาคในประเทศไทย",
+              fold: "close",
               layers: [
                 new TileLayer({
-                  title: "Counties",
+                  title: "ภาคกลาง",
                   visible: false,
                   source: new TileWMS({
-                    url: "https://ows.terrestris.de/osm/service",
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
                     params: {
-                      LAYERS: "OSM-WMS",
+                      LAYERS: "web_gis:central",
                     },
                   }),
                 }),
                 new TileLayer({
-                  title: "Ang-Thong",
+                  title: "ภาคตะวันออก",
                   visible: false,
                   source: new TileWMS({
                     attributions: "@geoserver",
-                    url: "http://localhost:8080/geoserver/macro_provinces/wms?",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
                     params: {
-                      LAYERS: "macro_provinces:ang thong",
+                      LAYERS: "web_gis:east",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "ภาคเหนือ่",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:north",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "ภาคอีสาน",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:northeast",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "ภาคใต้",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:south",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "ภาคตะวันตก",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:west",
                     },
                   }),
                 }),
               ],
             }),
-          ],
-        }),
-        new LayerGroup({
-          layers: [
-            new TileLayer({
-              title: "Ang-Thong",
-              visible: false,
-              source: new TileWMS({
-                attributions: "@geoserver",
-                url: "http://localhost:8080/geoserver/macro_provinces/wms?",
-                params: {
-                  LAYERS: "macro_provinces:ang thong",
-                },
-              }),
+
+            //province boundary
+            new LayerGroup({
+              title: "เลือกจังหวัด",
+              fold: "close",
+              layers: [
+                new TileLayer({
+                  title: "Amnat charoen",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:amnat_charoen",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Bangkok",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:bangkok",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Chiang mai",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:chiang_mai",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Kalasin",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:kalasin",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Nakhon pathom",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:nakhon_pathom",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Nan",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:nan",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Phuket",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:phuket",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Sakon nakhon",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:sakon_nakhon",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Samut prakan",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:samut_prakan",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Samut sakhon",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:samut_sakhon",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Samut songkhram",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:samut_songkhram",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Tak",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:tak",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "Udon thani",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:udon_thani",
+                    },
+                  }),
+                }),
+              ],
             }),
           ],
         }),
