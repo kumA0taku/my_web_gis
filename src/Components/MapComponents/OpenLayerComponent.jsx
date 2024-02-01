@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "ol/ol.css"; //D:\proJect\my_web_gis\node_modules\ol\ol.css
 import Map from "ol/Map";
 import View from "ol/View";
 import { transform } from "ol/proj";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
-import Stamen from "ol/source/Stamen";
+// import Stamen from "ol/source/Stamen";
 import LayerGroup from "ol/layer/Group";
 import TileWMS from "ol/source/TileWMS";
 import LayerSwitcher from "ol-layerswitcher";
@@ -49,6 +49,31 @@ const OpenLayerComponent = () => {
           title: "เครื่องมือ",
           fold: "open",
           layers: [
+
+            //police th
+            new TileLayer({
+              title: "police",
+              visible: false,
+              source: new TileWMS({
+                attributions: "@geoserver",
+                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                params: {
+                  LAYERS: "web_gis:police_th2",
+                },
+              }),
+            }),
+            //river th
+            new TileLayer({
+              title: "สายแม่น้ำในประเทศไทย",
+              visible: false,
+              source: new TileWMS({
+                attributions: "@geoserver",
+                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                params: {
+                  LAYERS: "web_gis:waterways",
+                },
+              }),
+            }),
             //ขอบเขตประเทศต่างๆ
             new TileLayer({
               title: "ขอบเขตประเทศต่างๆ",
@@ -61,95 +86,10 @@ const OpenLayerComponent = () => {
                 },
               }),
             }),
-
-            //Hospital - dont finish
-            new TileLayer({
-              title: "Hospital",
-              visible: false,
-              source: new TileWMS({
-                attributions: "@geoserver",
-                url: "http://localhost:8080/geoserver/web_gis/wms?",
-                params: {
-                  LAYERS: "web_gis:gov_hos",
-                },
-              }),
-            }),
-
-            //region of thailand
-            new LayerGroup({
-              title: "ขอบเขตภูมิภาคในประเทศไทย",
-              fold: "close",
-              layers: [
-                new TileLayer({
-                  title: "ภาคกลาง",
-                  visible: false,
-                  source: new TileWMS({
-                    attributions: "@geoserver",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
-                    params: {
-                      LAYERS: "web_gis:central",
-                    },
-                  }),
-                }),
-                new TileLayer({
-                  title: "ภาคตะวันออก",
-                  visible: false,
-                  source: new TileWMS({
-                    attributions: "@geoserver",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
-                    params: {
-                      LAYERS: "web_gis:east",
-                    },
-                  }),
-                }),
-                new TileLayer({
-                  title: "ภาคเหนือ่",
-                  visible: false,
-                  source: new TileWMS({
-                    attributions: "@geoserver",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
-                    params: {
-                      LAYERS: "web_gis:north",
-                    },
-                  }),
-                }),
-                new TileLayer({
-                  title: "ภาคอีสาน",
-                  visible: false,
-                  source: new TileWMS({
-                    attributions: "@geoserver",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
-                    params: {
-                      LAYERS: "web_gis:northeast",
-                    },
-                  }),
-                }),
-                new TileLayer({
-                  title: "ภาคใต้",
-                  visible: false,
-                  source: new TileWMS({
-                    attributions: "@geoserver",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
-                    params: {
-                      LAYERS: "web_gis:south",
-                    },
-                  }),
-                }),
-                new TileLayer({
-                  title: "ภาคตะวันตก",
-                  visible: false,
-                  source: new TileWMS({
-                    attributions: "@geoserver",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
-                    params: {
-                      LAYERS: "web_gis:west",
-                    },
-                  }),
-                }),
-              ],
-            }),
+            
 
             //province boundary
+            /*
             new LayerGroup({
               title: "เลือกจังหวัด",
               fold: "close",
@@ -299,6 +239,107 @@ const OpenLayerComponent = () => {
                 }),
               ],
             }),
+            */
+            
+            //ขอบเขตจังหวัดต่างๆ
+            new TileLayer({
+              title: "ขอบเขตจังหวัดต่างๆ",
+              visible: false,
+              fold: "open",
+              source: new TileWMS({
+                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                params: {
+                  LAYERS: "web_gis:bd_province",
+                },
+              }),
+            }),
+
+            //test
+            // new TileLayer({
+            //   title: "test01",
+            //   visible: false,
+            //   source: new TileWMS({
+            //     attributions: "@geoserver",
+            //     url: "http://localhost:8080/geoserver/web_gis/wms?",
+            //     params: {
+            //       LAYERS: "web_gis:somdet3",
+            //     },
+            //   }),
+            // }),
+            
+            //region of thailand
+            new LayerGroup({
+              title: "ขอบเขตภูมิภาคในประเทศไทย",
+              fold: "close",
+              layers: [
+                new TileLayer({
+                  title: "ภาคกลาง",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:central",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "ภาคตะวันออก",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:east",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "ภาคเหนือ่",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:north",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "ภาคอีสาน",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:northeast",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "ภาคใต้",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:south",
+                    },
+                  }),
+                }),
+                new TileLayer({
+                  title: "ภาคตะวันตก",
+                  visible: false,
+                  source: new TileWMS({
+                    attributions: "@geoserver",
+                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    params: {
+                      LAYERS: "web_gis:west",
+                    },
+                  }),
+                }),
+              ],
+            }),
           ],
         }),
       ],
@@ -321,5 +362,24 @@ const OpenLayerComponent = () => {
   }, [lat, lng, zoom]);
   return <div className="map-container" ref={mapContainerRef} />;
 };
+
+// Points
+// function pointStyleFunction() {
+//   return new Style({
+//     image: new CircleStyle({
+//       radius: 5,
+//       fill: new Fill({ color: "rgba(255, 0, 0, 0.1)" }),
+//       stroke: new Stroke({ color: "red", width: 1 }),
+//     }),
+//   });
+// }
+
+// const vectorPoints = new VectorLayer({
+//   source: new VectorSource({
+//     url: "../../data/geojson/hos.json", //D:\proJect\my_web_gis\src\data\geojson\hos.json
+//     format: new GeoJSON(),
+//   }),
+//   style: pointStyleFunction,
+// });
 
 export default OpenLayerComponent;
