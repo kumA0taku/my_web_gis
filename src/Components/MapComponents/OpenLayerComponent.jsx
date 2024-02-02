@@ -5,7 +5,7 @@ import View from "ol/View";
 import { transform } from "ol/proj";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
-// import Stamen from "ol/source/Stamen";
+import Stamen from "ol/source/Stamen";
 import LayerGroup from "ol/layer/Group";
 import TileWMS from "ol/source/TileWMS";
 import LayerSwitcher from "ol-layerswitcher";
@@ -34,13 +34,27 @@ const OpenLayerComponent = () => {
               visible: true,
               source: new OSM({}),
             }),
-            // add Stamen toner if You can.
+
+            //ขอบเขตประเทศต่างๆ
+            new TileLayer({
+              title: "ขอบเขตประเทศต่างๆ",
+              type: "base",
+              visible: false,
+              source: new TileWMS({
+                url: "https://ows.terrestris.de/osm/service",
+                params: {
+                  LAYERS: "OSM-WMS",
+                },
+              }),
+            }),
+
+            // //ขอบเขตประเทศต่างๆ
             // new TileLayer({
             //   title: "Stamen Toner",
             //   type: "base",
             //   visible: false,
             //   source: new Stamen({
-            //     layer: "toner",
+            //     layer: 'toner',
             //   }),
             // }),
           ],
@@ -49,10 +63,34 @@ const OpenLayerComponent = () => {
           title: "เครื่องมือ",
           fold: "open",
           layers: [
+            //ขอบเขตจังหวัดต่างๆ
+            new TileLayer({
+              title: "ขอบเขตจังหวัดต่างๆ",
+              visible: false,
+              fold: "open",
+              source: new TileWMS({
+                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                params: {
+                  LAYERS: "web_gis:bd_province",
+                },
+              }),
+            }),
 
+            //hos th
+            new TileLayer({
+              title: "สถานพยาบาลในประเทศไทย",
+              visible: false,
+              source: new TileWMS({
+                attributions: "@geoserver",
+                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                params: {
+                  LAYERS: "web_gis:hos_th",
+                },
+              }),
+            }),
             //police th
             new TileLayer({
-              title: "police",
+              title: "สถานีตำรวจในประเทศไทย",
               visible: false,
               source: new TileWMS({
                 attributions: "@geoserver",
@@ -71,18 +109,6 @@ const OpenLayerComponent = () => {
                 url: "http://localhost:8080/geoserver/web_gis/wms?",
                 params: {
                   LAYERS: "web_gis:waterways",
-                },
-              }),
-            }),
-            //ขอบเขตประเทศต่างๆ
-            new TileLayer({
-              title: "ขอบเขตประเทศต่างๆ",
-              visible: false,
-              fold: "open",
-              source: new TileWMS({
-                url: "https://ows.terrestris.de/osm/service",
-                params: {
-                  LAYERS: "OSM-WMS",
                 },
               }),
             }),
@@ -241,18 +267,6 @@ const OpenLayerComponent = () => {
             }),
             */
             
-            //ขอบเขตจังหวัดต่างๆ
-            new TileLayer({
-              title: "ขอบเขตจังหวัดต่างๆ",
-              visible: false,
-              fold: "open",
-              source: new TileWMS({
-                url: "http://localhost:8080/geoserver/web_gis/wms?",
-                params: {
-                  LAYERS: "web_gis:bd_province",
-                },
-              }),
-            }),
 
             //test
             // new TileLayer({
