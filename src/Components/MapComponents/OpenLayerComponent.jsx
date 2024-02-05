@@ -5,10 +5,12 @@ import View from "ol/View";
 import { transform } from "ol/proj";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
-import Stamen from "ol/source/Stamen";
+// import Stamen from "ol/source/Stamen";
 import LayerGroup from "ol/layer/Group";
 import TileWMS from "ol/source/TileWMS";
 import LayerSwitcher from "ol-layerswitcher";
+
+import Overlay from 'ol/Overlay'; // Import the Overlay class
 
 // Import styling
 import "../../App";
@@ -16,6 +18,7 @@ import "../../App";
 const OpenLayerComponent = () => {
   const mapContainerRef = useRef(null);
   const map = useRef(null);
+  // const popupRef = useRef(null);
 
   const [lng] = useState(100.6211);
   const [lat] = useState(15.1346);
@@ -59,6 +62,8 @@ const OpenLayerComponent = () => {
             // }),
           ],
         }),
+
+        /**เครื่องมือ */
         new LayerGroup({
           title: "เครื่องมือ",
           fold: "open",
@@ -266,22 +271,8 @@ const OpenLayerComponent = () => {
               ],
             }),
             */
-            
-
-            //test
-            // new TileLayer({
-            //   title: "test01",
-            //   visible: false,
-            //   source: new TileWMS({
-            //     attributions: "@geoserver",
-            //     url: "http://localhost:8080/geoserver/web_gis/wms?",
-            //     params: {
-            //       LAYERS: "web_gis:somdet3",
-            //     },
-            //   }),
-            // }),
-            
-            //region of thailand
+      
+            // region of thailand
             new LayerGroup({
               title: "ขอบเขตภูมิภาคในประเทศไทย",
               fold: "close",
@@ -370,30 +361,23 @@ const OpenLayerComponent = () => {
     });
     map.current.addControl(layerSwitcher);
 
+    const overlay = new Overlay({
+      element: document.createElement('div'),
+      positioning: 'bottom-center',
+      offset: [0, -10],
+    });
+    map.current.addOverlay(overlay);
+
+    map.current.on('click', (evt) => {
+      const coordinate = evt.coordinate;
+      console.log('Clicked coordinate: ', coordinate);
+    })
+
     return () => {
       map.current.setTarget(null);
     };
   }, [lat, lng, zoom]);
   return <div className="map-container" ref={mapContainerRef} />;
 };
-
-// Points
-// function pointStyleFunction() {
-//   return new Style({
-//     image: new CircleStyle({
-//       radius: 5,
-//       fill: new Fill({ color: "rgba(255, 0, 0, 0.1)" }),
-//       stroke: new Stroke({ color: "red", width: 1 }),
-//     }),
-//   });
-// }
-
-// const vectorPoints = new VectorLayer({
-//   source: new VectorSource({
-//     url: "../../data/geojson/hos.json", //D:\proJect\my_web_gis\src\data\geojson\hos.json
-//     format: new GeoJSON(),
-//   }),
-//   style: pointStyleFunction,
-// });
 
 export default OpenLayerComponent;
