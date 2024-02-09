@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import "ol/ol.css"; //D:\proJect\my_web_gis\node_modules\ol\ol.css
+import "ol/ol.css";
 import Map from "ol/Map";
 import View from "ol/View";
 import { toLonLat, transform } from "ol/proj";
@@ -362,26 +362,34 @@ const OpenLayerComponent = () => {
     map.current.addControl(layerSwitcher);
 
     const overlay = new Overlay({
-      element: document.createElement('div'),
-      positioning: 'bottom-center',
+      // target: mapContainerRef.current,
+      element: popupRef.current,
+      positioning: "bottom-center",
       offset: [0, -10],
+      autoPan: true,
     });
     map.current.addOverlay(overlay);
 
     map.current.on('click', (evt) => {
       const coordinate = evt.coordinate;
-      console.log('Clicked coordinate: ', coordinate);
       const [lng, lat] = toLonLat(coordinate);
       
-      console.log('lat: ' , lat, 'lng: ' , lng);
-      popupRef.innerHTML = `<p>You clicked here:</p><code>Latitude: ${lat.toFixed(6)}, <br/> Longitude: ${lng.toFixed(6)}</code>`;
+      // console.log('lat: ' , lat, 'lng: ' , lng);
+      popupRef.current.innerHTML = `<p>ตำแหน่ง:</p><code>Latitude: ${lat.toFixed(6)}, <br/> Longitude: ${lng.toFixed(6)}</code>`;
+      overlay.setPosition(coordinate);
     })
 
     return () => {
       map.current.setTarget(null);
     };
   }, [lat, lng, zoom]);
-  return <div className="map-container" ref={mapContainerRef} />;
+
+  return (
+    <div>
+      <div className="map-container" ref={mapContainerRef}></div>
+      <div className="ol-popup" ref={popupRef}></div>
+    </div>
+  );
 };
 
 export default OpenLayerComponent;
