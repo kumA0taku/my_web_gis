@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import "ol/ol.css"; //D:\proJect\my_web_gis\node_modules\ol\ol.css
 import Map from "ol/Map";
 import View from "ol/View";
-import { transform } from "ol/proj";
+import { toLonLat, transform } from "ol/proj";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 // import Stamen from "ol/source/Stamen";
@@ -18,7 +18,7 @@ import "../../App";
 const OpenLayerComponent = () => {
   const mapContainerRef = useRef(null);
   const map = useRef(null);
-  // const popupRef = useRef(null);
+  const popupRef = useRef(null);
 
   const [lng] = useState(100.6211);
   const [lat] = useState(15.1346);
@@ -371,6 +371,10 @@ const OpenLayerComponent = () => {
     map.current.on('click', (evt) => {
       const coordinate = evt.coordinate;
       console.log('Clicked coordinate: ', coordinate);
+      const [lng, lat] = toLonLat(coordinate);
+      
+      console.log('lat: ' , lat, 'lng: ' , lng);
+      popupRef.innerHTML = `<p>You clicked here:</p><code>Latitude: ${lat.toFixed(6)}, <br/> Longitude: ${lng.toFixed(6)}</code>`;
     })
 
     return () => {
