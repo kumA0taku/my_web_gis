@@ -10,7 +10,7 @@ import LayerGroup from "ol/layer/Group";
 import TileWMS from "ol/source/TileWMS";
 import LayerSwitcher from "ol-layerswitcher";
 
-import Overlay from 'ol/Overlay'; // Import the Overlay class
+import Overlay from "ol/Overlay"; // Import the Overlay class
 
 // Import styling
 import "../../App";
@@ -19,6 +19,8 @@ const OpenLayerComponent = () => {
   const mapContainerRef = useRef(null);
   const map = useRef(null);
   const popupRef = useRef(null);
+  const popupContentRef = useRef(null);
+  const popupCloserRef = useRef(null);
 
   const [lng] = useState(100.6211);
   const [lat] = useState(15.1346);
@@ -50,16 +52,6 @@ const OpenLayerComponent = () => {
                 },
               }),
             }),
-
-            // //ขอบเขตประเทศต่างๆ
-            // new TileLayer({
-            //   title: "Stamen Toner",
-            //   type: "base",
-            //   visible: false,
-            //   source: new Stamen({
-            //     layer: 'toner',
-            //   }),
-            // }),
           ],
         }),
 
@@ -101,7 +93,7 @@ const OpenLayerComponent = () => {
                 attributions: "@geoserver",
                 url: "http://localhost:8080/geoserver/web_gis/wms?",
                 params: {
-                  LAYERS: "web_gis:police_th2",
+                  LAYERS: "web_gis:police_th3",
                 },
               }),
             }),
@@ -117,7 +109,6 @@ const OpenLayerComponent = () => {
                 },
               }),
             }),
-            
 
             //province boundary
             /*
@@ -271,7 +262,7 @@ const OpenLayerComponent = () => {
               ],
             }),
             */
-      
+
             // region of thailand
             new LayerGroup({
               title: "ขอบเขตภูมิภาคในประเทศไทย",
@@ -370,14 +361,26 @@ const OpenLayerComponent = () => {
     });
     map.current.addOverlay(overlay);
 
-    map.current.on('click', (evt) => {
+    /**
+     * Add a click handler to hide the popup.
+     * @return {boolean} Don't follow the href.
+     */
+    popupCloserRef.current.onclick = function () {
+      overlay.setPosition(undefined);
+      popupCloserRef.blur();
+      return false;
+    };
+
+    map.current.on("click", (evt) => {
       const coordinate = evt.coordinate;
       const [lng, lat] = toLonLat(coordinate);
-      
+
       // console.log('lat: ' , lat, 'lng: ' , lng);
-      popupRef.current.innerHTML = `<p>ตำแหน่ง:</p><code>Latitude: ${lat.toFixed(6)}, <br/> Longitude: ${lng.toFixed(6)}</code>`;
+      popupContentRef.current.innerHTML = `<p>ตำแหน่ง:</p><code>Latitude: ${lat.toFixed(
+        6
+      )}, <br/> Longitude: ${lng.toFixed(6)}</code>`;
       overlay.setPosition(coordinate);
-    })
+    });
 
     return () => {
       map.current.setTarget(null);
@@ -387,7 +390,10 @@ const OpenLayerComponent = () => {
   return (
     <div>
       <div className="map-container" ref={mapContainerRef}></div>
-      <div className="ol-popup" ref={popupRef}></div>
+      <div ref={popupRef} className="ol-popup">
+        <a href="#" ref={popupCloserRef} className="ol-popup-closer"></a>
+        <div ref={popupContentRef}></div>
+      </div>
     </div>
   );
 };
