@@ -7,7 +7,6 @@
  .App {
   width: 100vw;
   height: 100vh;
-  display: flex;
   background: #000000;
   align-items: center;
   justify-content: center;
@@ -15,17 +14,13 @@
  }
   /* Tab component css*/
  .Tabs{
-  width: 95%;
+  width: 75%;
   height: auto;
-  min-height: 90%;
-  background: #ebe5e5;
-  border: 1px solid #6bb7d8;
-  margin: 3.5rem auto 1.5rem;
-  padding: 2rem 1rem;
-  color: #003a53;
-  border-radius: 2rem;
+  min-height: 80%;
+  margin: 2rem auto 1rem;
+  color: #000000;
   @media (max-width: 769px) {
-   padding: 2rem 0;
+   padding: rem 0;
   }
   
  }
@@ -263,12 +258,16 @@
     content: "❌";
   }
 
-  /*tab-menu  */
-.card {
-  background: var(--surface-card);
-  padding: 2rem;
-  border-radius: 10px;
-  margin-bottom: 1rem;
 }
 
+.btn-accept{
+  color:black;
+  background-color:green;
+}
+
+p {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
 }

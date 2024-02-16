@@ -223,7 +223,7 @@ const OpenLayerComponent = () => {
       const [lng, lat] = toLonLat(coordinate);
 
       // console.log('lat: ' , lat, 'lng: ' , lng);
-      popupContentRef.current.innerHTML = `<p>ตำแหน่ง:</p><code>Latitude: ${lat.toFixed(
+      popupContentRef.current.innerHTML = `<p>Location:</p><code>Latitude: ${lat.toFixed(
         6
       )}, <br/> Longitude: ${lng.toFixed(6)}</code>`;
       overlay.setPosition(coordinate);
