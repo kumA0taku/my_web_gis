@@ -31,13 +31,21 @@ const OpenLayerComponent = () => {
 const thailandExtent4326 = [100.92995795643422, 13.100601172120763, 100.915005900, 13.1050059];// Transform Thailand's extent from EPSG:4326 to EPSG:3857
 const thailandExtent3857 = transformExtent(thailandExtent4326, 'EPSG:4326', 'EPSG:3857');
 
-
+class CustomZoomToExtent extends ZoomToExtent {
+  constructor(options) {
+    super({
+      extent: options.extent,
+      label: 'H', // Change 'Custom Label' to your desired label
+      tipLabel: options.tipLabel,
+    });
+  }
+} 
   useEffect(() => {
     map.current = new Map({
       controls: defaultControls().extend([
-        new ZoomToExtent({
-          
-      extent: thailandExtent3857,
+        new CustomZoomToExtent({
+          extent: thailandExtent3857,
+          tipLabel: 'Zoom to Thailand', // Adjust the tooltip label as needed
         })
       ]),
       target: mapContainerRef.current,
