@@ -2,13 +2,14 @@ import { useEffect, useState, useRef } from "react";
 import "ol/ol.css";
 import Map from "ol/Map";
 import View from "ol/View";
-import { toLonLat, transform } from "ol/proj";
+import { toLonLat, transform, transformExtent } from "ol/proj";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 // import Stamen from "ol/source/Stamen";
 import LayerGroup from "ol/layer/Group";
 import TileWMS from "ol/source/TileWMS";
 import LayerSwitcher from "ol-layerswitcher";
+import {ZoomToExtent, defaults as defaultControls} from 'ol/control.js';
 
 import Overlay from "ol/Overlay"; // Import the Overlay class
 
@@ -25,9 +26,20 @@ const OpenLayerComponent = () => {
   const [lng] = useState(100.6211);
   const [lat] = useState(15.1346);
   const [zoom] = useState(5.5284);
+  
+// Thailand's extent in EPSG:4326
+const thailandExtent4326 = [100.92995795643422, 13.100601172120763, 100.915005900, 13.1050059];// Transform Thailand's extent from EPSG:4326 to EPSG:3857
+const thailandExtent3857 = transformExtent(thailandExtent4326, 'EPSG:4326', 'EPSG:3857');
+
 
   useEffect(() => {
     map.current = new Map({
+      controls: defaultControls().extend([
+        new ZoomToExtent({
+          
+      extent: thailandExtent3857,
+        })
+      ]),
       target: mapContainerRef.current,
       layers: [
         new LayerGroup({
