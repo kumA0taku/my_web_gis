@@ -45,7 +45,7 @@ class CustomZoomToExtent extends ZoomToExtent {
       controls: defaultControls().extend([
         new CustomZoomToExtent({
           extent: thailandExtent3857,
-          tipLabel: 'Zoom to Thailand', // Adjust the tooltip label as needed
+          tipLabel: 'Zoom to Gistda', // Adjust the tooltip label as needed
         })
       ]),
       target: mapContainerRef.current,

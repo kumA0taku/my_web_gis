@@ -7,10 +7,14 @@
  .App {
   width: 100vw;
   height: 100vh;
-  background: #000000;
+  background: #ffffff;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  
+  background-image: url('assets/qty_gl.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image file */
+  background-size: cover; /* Ensures the background image covers the entire element */
+  background-position: center; /* Centers the background image */
  }
   /* Tab component css*/
  .Tabs{
@@ -22,6 +26,8 @@
   @media (max-width: 769px) {
    padding: rem 0;
   }
+  
+  filter: drop-shadow(0 -4mm 17mm rgb(255, 255, 255));
   
  }
 
@@ -257,7 +263,7 @@
   .ol-popup-closer:after {
     content: "❌";
   }
-
+  
 }
 
 .btn-accept{
@@ -270,4 +276,19 @@ p {
   font-weight: bold;
   color: black;
   font-family: 'Courier New', Courier, monospace;
+}
+.white-box {
+  background-color: rgb(83, 23, 23); /* Set the background color */
+  padding: 10px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add border radius for rounded corners */
+}
+.card-img{
+  background-color: rgb(66, 64, 87); /* Set the background color */
+  padding: 10px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add border radius for rounded corners */
+  filter: drop-shadow(0 -6mm 4mm rgb(146, 17, 17));
+}
+.card-bg{
+  padding: 10px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add border radius for rounded corners */
 }
