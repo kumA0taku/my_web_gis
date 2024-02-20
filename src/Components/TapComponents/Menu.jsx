@@ -1,6 +1,5 @@
-import { useRef, useState } from "react";
+import {useState } from "react";
 import { Menubar } from "primereact/menubar";
-import { Toast } from "primereact/toast";
 import homelogo from "../../assets/gismap3.png"; // Import the image
 import { Dialog } from "primereact/dialog";
 
@@ -16,6 +15,11 @@ export default function Menu() {
         visible.current.show();
       },
     },
+    
+  ];
+
+  const items2 = [
+    
     {
       label: "Help",
       icon: "pi pi-question-circle",
@@ -25,10 +29,8 @@ export default function Menu() {
     },
   ];
 
-
-  
-  const toast = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [visible1, setVisible1] = useState(false);
 
   const start = (
     <img
@@ -49,7 +51,6 @@ export default function Menu() {
       >
         {start}
         <Menubar model={items1} end={end} onClick={() => setVisible(true)} />
-        <Toast ref={toast} />
 
         <Dialog
           header="Header"
@@ -65,7 +66,25 @@ export default function Menu() {
           <h3>Hii Toey</h3>
 
         </Dialog>
+
+        <Menubar model={items2} end={end} onClick={() => setVisible1(true)} />
+
+        <Dialog
+          header="Header"
+          visible={visible1}
+          style={{ width: "50vw" }}
+          onHide={() => setVisible1(false)}
+        >
+          <p className="m-0">
+            Hello Baitoey1234
+          </p>
+          <h1>Hii</h1>
+          <h2>Hii Warin</h2>
+          <h3>Hii Toey</h3>
+
+        </Dialog>
       </div>
     </div>
+    
   );
 }
