@@ -59,10 +59,24 @@ export default function Menu() {
         onHide={() => setSymVisible(false)}
         ref={symDialogRef} // Attach ref to the Dialog component
       >
-        <p className="m-0">Hello Warin</p>
-        <h1>Hii</h1>
-        <h2>Hii Warin</h2>
-        <h3>Hii Toey</h3>
+      <div style={{ display: "flex"}}>
+        <img src={homelogo} alt="Symbol Image" width="50" height="50" />
+        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
+          <p className="m-0">เส้นทางแม่น้ำแต่ละสาย</p>
+        </div>
+      </div>
+      <div style={{ display: "flex"}}>
+        <img src={homelogo} alt="Symbol Image" width="50" height="50" />
+        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
+          <p className="m-0">ขอบเขตพื้นที่ต่างๆ</p>
+        </div>
+      </div>
+      <div style={{ display: "flex"}}>
+        <img src={homelogo} alt="Symbol Image" width="50" height="50" />
+        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
+          <p className="m-0">ตำแหน่งพิกัดต่างๆ</p>
+        </div>
+      </div>
       </Dialog>
 
       <Dialog
@@ -72,10 +86,12 @@ export default function Menu() {
         onHide={() => setHelpVisible(false)}
         ref={helpDialogRef} // Attach ref to the Dialog component
       >
-        <p className="m-0">Hello Toey</p>
-        <h1>Hii</h1>
-        <h2>Hii Warin</h2>
-        <h3>Hii Toey</h3>
+      <div style={{ display: "flex"}}>
+        <img src={homelogo} alt="Symbol Image" width="50" height="50" />
+        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
+          <p className="m-0">temp...</p>
+        </div>
+      </div>
       </Dialog>
     </div>
   );
