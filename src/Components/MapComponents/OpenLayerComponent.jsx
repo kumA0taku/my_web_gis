@@ -62,10 +62,11 @@ class CustomZoomToExtent extends ZoomToExtent {
 
             //ขอบเขตประเทศต่างๆ
             new TileLayer({
-              title: "ขอบเขตประเทศต่างๆ",
+              title: "TileWMS",
               type: "base",
               visible: false,
               source: new TileWMS({
+                attributions: "@TileWMS",
                 url: "https://ows.terrestris.de/osm/service",
                 params: {
                   LAYERS: "OSM-WMS",
@@ -86,6 +87,7 @@ class CustomZoomToExtent extends ZoomToExtent {
               visible: false,
               fold: "open",
               source: new TileWMS({
+                attributions: "@TileWMS",
                 url: "http://localhost:8080/geoserver/web_gis/wms?",
                 params: {
                   LAYERS: "web_gis:bd_province",
@@ -98,7 +100,7 @@ class CustomZoomToExtent extends ZoomToExtent {
               title: "สถานพยาบาลในประเทศไทย",
               visible: false,
               source: new TileWMS({
-                attributions: "@geoserver",
+                attributions: "@TileWMS",
                 url: "http://localhost:8080/geoserver/web_gis/wms?",
                 params: {
                   LAYERS: "web_gis:hos_th",
@@ -110,7 +112,7 @@ class CustomZoomToExtent extends ZoomToExtent {
               title: "สถานีตำรวจในประเทศไทย",
               visible: false,
               source: new TileWMS({
-                attributions: "@geoserver",
+                attributions: "@TileWMS",
                 url: "http://localhost:8080/geoserver/web_gis/wms?",
                 params: {
                   LAYERS: "web_gis:police_th3",
@@ -122,7 +124,7 @@ class CustomZoomToExtent extends ZoomToExtent {
               title: "สายแม่น้ำในประเทศไทย",
               visible: false,
               source: new TileWMS({
-                attributions: "@geoserver",
+                attributions: "@TileWMS",
                 url: "http://localhost:8080/geoserver/web_gis/wms?",
                 params: {
                   LAYERS: "web_gis:waterways",
@@ -139,7 +141,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   title: "ภาคกลาง",
                   visible: false,
                   source: new TileWMS({
-                    attributions: "@geoserver",
+                    attributions: "@TileWMS",
                     url: "http://localhost:8080/geoserver/web_gis/wms?",
                     params: {
                       LAYERS: "web_gis:central",
@@ -150,7 +152,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   title: "ภาคตะวันออก",
                   visible: false,
                   source: new TileWMS({
-                    attributions: "@geoserver",
+                    attributions: "@TileWMS",
                     url: "http://localhost:8080/geoserver/web_gis/wms?",
                     params: {
                       LAYERS: "web_gis:east",
@@ -161,7 +163,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   title: "ภาคเหนือ่",
                   visible: false,
                   source: new TileWMS({
-                    attributions: "@geoserver",
+                    attributions: "@TileWMS",
                     url: "http://localhost:8080/geoserver/web_gis/wms?",
                     params: {
                       LAYERS: "web_gis:north",
@@ -172,7 +174,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   title: "ภาคอีสาน",
                   visible: false,
                   source: new TileWMS({
-                    attributions: "@geoserver",
+                    attributions: "@TileWMS",
                     url: "http://localhost:8080/geoserver/web_gis/wms?",
                     params: {
                       LAYERS: "web_gis:northeast",
@@ -183,7 +185,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   title: "ภาคใต้",
                   visible: false,
                   source: new TileWMS({
-                    attributions: "@geoserver",
+                    attributions: "@TileWMS",
                     url: "http://localhost:8080/geoserver/web_gis/wms?",
                     params: {
                       LAYERS: "web_gis:south",
@@ -194,7 +196,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   title: "ภาคตะวันตก",
                   visible: false,
                   source: new TileWMS({
-                    attributions: "@geoserver",
+                    attributions: "@TileWMS",
                     url: "http://localhost:8080/geoserver/web_gis/wms?",
                     params: {
                       LAYERS: "web_gis:west",

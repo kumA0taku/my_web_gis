@@ -1,36 +1,35 @@
-import {useState } from "react";
+import { useState, useRef } from "react";
 import { Menubar } from "primereact/menubar";
 import homelogo from "../../assets/gismap3.png"; // Import the image
 import { Dialog } from "primereact/dialog";
 
 // Import styling
-import "../../App";
+import "../../App.css"; // Assuming you have a CSS file named App.css for styling
 
 export default function Menu() {
-  const items1 = [
+  const [symVisible, setSymVisible] = useState(false);
+  const [helpVisible, setHelpVisible] = useState(false);
+
+  // Create refs for the Dialog components
+  const symDialogRef = useRef(null);
+  const helpDialogRef = useRef(null);
+
+  const items = [
     {
       label: "Symbol",
       icon: "pi pi-image",
       command: () => {
-        visible.current.show();
+        setSymVisible(true); // Update the state to show the dialog
       },
     },
-    
-  ];
-
-  const items2 = [
-    
     {
       label: "Help",
       icon: "pi pi-question-circle",
       command: () => {
-        visible.current.show();
+        setHelpVisible(true); // Update the state to show the dialog
       },
     },
   ];
-
-  const [visible, setVisible] = useState(false);
-  const [visible1, setVisible1] = useState(false);
 
   const start = (
     <img
@@ -39,7 +38,7 @@ export default function Menu() {
       width="140"
       height="auto"
       className="mr-2"
-    ></img>
+    />
   );
   const end = [];
 
@@ -50,41 +49,34 @@ export default function Menu() {
         style={{ display: "flex", justifyContent: "space-between" }}
       >
         {start}
-        <Menubar model={items1} end={end} onClick={() => setVisible(true)} />
-
-        <Dialog
-          header="Header"
-          visible={visible}
-          style={{ width: "50vw" }}
-          onHide={() => setVisible(false)}
-        >
-          <p className="m-0">
-            Hello Baitoey
-          </p>
-          <h1>Hii</h1>
-          <h2>Hii Warin</h2>
-          <h3>Hii Toey</h3>
-
-        </Dialog>
-
-        <Menubar model={items2} end={end} onClick={() => setVisible1(true)} />
-
-        <Dialog
-          header="Header"
-          visible={visible1}
-          style={{ width: "50vw" }}
-          onHide={() => setVisible1(false)}
-        >
-          <p className="m-0">
-            Hello Baitoey1234
-          </p>
-          <h1>Hii</h1>
-          <h2>Hii Warin</h2>
-          <h3>Hii Toey</h3>
-
-        </Dialog>
+        <Menubar model={items} end={end} />
       </div>
+
+      <Dialog
+        header= {<h2>Symbols</h2>}
+        visible={symVisible}
+        style={{ width: "50vw" }}
+        onHide={() => setSymVisible(false)}
+        ref={symDialogRef} // Attach ref to the Dialog component
+      >
+        <p className="m-0">Hello Warin</p>
+        <h1>Hii</h1>
+        <h2>Hii Warin</h2>
+        <h3>Hii Toey</h3>
+      </Dialog>
+
+      <Dialog
+        header= {<h2>Help</h2>}
+        visible={helpVisible}
+        style={{ width: "50vw" }}
+        onHide={() => setHelpVisible(false)}
+        ref={helpDialogRef} // Attach ref to the Dialog component
+      >
+        <p className="m-0">Hello Toey</p>
+        <h1>Hii</h1>
+        <h2>Hii Warin</h2>
+        <h3>Hii Toey</h3>
+      </Dialog>
     </div>
-    
   );
 }
