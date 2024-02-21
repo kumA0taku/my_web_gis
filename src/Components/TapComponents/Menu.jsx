@@ -1,6 +1,9 @@
 import { useState, useRef } from "react";
 import { Menubar } from "primereact/menubar";
 import homelogo from "../../assets/gismap3.png"; // Import the image
+import symLogo1 from "../../assets/symbols/bd_th.png"; // Import the image of bd
+import symLogo2 from "../../assets/symbols/point_th.png"; // Import the image of point
+import symLogo3 from "../../assets/symbols/wate_th.png"; // Import the image of water line
 import { Dialog } from "primereact/dialog";
 
 // Import styling
@@ -55,26 +58,26 @@ export default function Menu() {
       <Dialog
         header= {<h2>Symbols</h2>}
         visible={symVisible}
-        style={{ width: "50vw" }}
+        style={{ width: "50vw"}}
         onHide={() => setSymVisible(false)}
         ref={symDialogRef} // Attach ref to the Dialog component
       >
       <div style={{ display: "flex"}}>
-        <img src={homelogo} alt="Symbol Image" width="50" height="50" />
+        <img src={symLogo1} alt="Symbol Image" width="50" height="50" />
         <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
-          <p className="m-0">เส้นทางแม่น้ำแต่ละสาย</p>
+          <p className="m-0">ขอบเขตพื้นที่ต่างๆ</p> 
         </div>
       </div>
       <div style={{ display: "flex"}}>
-        <img src={homelogo} alt="Symbol Image" width="50" height="50" />
-        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
-          <p className="m-0">ขอบเขตพื้นที่ต่างๆ</p>
-        </div>
-      </div>
-      <div style={{ display: "flex"}}>
-        <img src={homelogo} alt="Symbol Image" width="50" height="50" />
+        <img src={symLogo2} alt="Symbol Image" width="50" height="50" />
         <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
           <p className="m-0">ตำแหน่งพิกัดต่างๆ</p>
+        </div>
+      </div>
+      <div style={{ display: "flex"}}>
+        <img src={symLogo3} alt="Symbol Image" width="50" height="50" />
+        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
+          <p className="m-0">เส้นทางแม่น้ำแต่ละสาย</p> 
         </div>
       </div>
       </Dialog>
