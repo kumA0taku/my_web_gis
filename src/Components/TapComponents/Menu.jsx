@@ -1,10 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Menubar } from "primereact/menubar";
 import homelogo from "../../assets/gismap3.png"; // Import the image
 import symLogo1 from "../../assets/symbols/bd_th.png"; // Import the image of bd
 import symLogo2 from "../../assets/symbols/point_th.png"; // Import the image of point
 import symLogo3 from "../../assets/symbols/wate_th.png"; // Import the image of water line
 import { Dialog } from "primereact/dialog";
+import { Carousel } from "primereact/carousel";
+import { ProductService } from "../../service/ProductService";
 
 // Import styling
 import "../../App.css"; // Assuming you have a CSS file named App.css for styling
@@ -12,10 +14,62 @@ import "../../App.css"; // Assuming you have a CSS file named App.css for stylin
 export default function Menu() {
   const [symVisible, setSymVisible] = useState(false);
   const [helpVisible, setHelpVisible] = useState(false);
+  const [products, setProducts] = useState([]);
 
   // Create refs for the Dialog components
   const symDialogRef = useRef(null);
   const helpDialogRef = useRef(null);
+
+  const responsiveOptions = [
+    {
+      breakpoint: "1400px",
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: "1199px",
+      numVisible: 3,
+      numScroll: 1,
+    },
+    {
+      breakpoint: "767px",
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: "575px",
+      numVisible: 1,
+      numScroll: 1,
+    },
+  ];
+
+  useEffect(() => {
+    ProductService.getProductsSmall().then((data) =>
+      setProducts(data.slice(0, 3))
+    );
+  }, []);
+
+  const productTemplate = (product) => {
+    return (
+      <div
+        className="border-1 surface-border border-round m-2 text-center py-5 px-3 "
+        style={{ justifyContent: "center" }}
+      >
+        <div>
+          <h3 className="mb-1 ">{product.topic}</h3>
+          <h4 className="mt-0 mb-3">{product.description}</h4>
+        </div>
+        <div className="mb-3">
+          <img
+            src={`${product.imagePath}`}
+            alt={product.topic}
+            className="w-6 shadow-2 autoFitImage"
+            style={{ objectFit: "auto" }} // Add this style
+          />
+        </div>
+      </div>
+    );
+  };
 
   const items = [
     {
@@ -35,13 +89,7 @@ export default function Menu() {
   ];
 
   const start = (
-    <img
-      alt="logo"
-      src={homelogo}
-      width="140"
-      height="auto"
-      className="mr-2"
-    />
+    <img alt="logo" src={homelogo} width="140" height="auto" className="mr-2" />
   );
   const end = [];
 
@@ -55,46 +103,71 @@ export default function Menu() {
         <Menubar model={items} end={end} />
       </div>
 
+      {/* //Symbols */}
       <Dialog
-        header= {<h2>Symbols</h2>}
+        header={
+          <h2
+            style={{
+              background: "linear-gradient(to right, #FFF, rgb(86, 81, 142))", // Adjusted gradient colors
+            }}
+          >
+            Symbols
+          </h2>
+        }
         visible={symVisible}
-        style={{ width: "50vw"}}
+        style={{ width: "50vw" }}
         onHide={() => setSymVisible(false)}
         ref={symDialogRef} // Attach ref to the Dialog component
       >
-      <div style={{ display: "flex"}}>
-        <img src={symLogo1} alt="Symbol Image" width="50" height="50" />
-        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
-          <p className="m-0">ขอบเขตพื้นที่ต่างๆ</p> 
+        <div style={{ display: "flex" }}>
+          <img src={symLogo1} alt="Symbol Image" width="100" height="auto" />
+          <div style={{ marginLeft: "100px" }}>
+            {" "}
+            {/* Add margin to separate the image and text */}
+            <p>ขอบเขตพื้นที่ต่างๆ</p>
+          </div>
         </div>
-      </div>
-      <div style={{ display: "flex"}}>
-        <img src={symLogo2} alt="Symbol Image" width="50" height="50" />
-        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
-          <p className="m-0">ตำแหน่งพิกัดต่างๆ</p>
+        <div style={{ display: "flex" }}>
+          <img src={symLogo2} alt="Symbol Image" width="100" height="auto" />
+          <div style={{ marginLeft: "100px" }}>
+            {" "}
+            {/* Add margin to separate the image and text */}
+            <p>ตำแหน่งพิกัดต่างๆ</p>
+          </div>
         </div>
-      </div>
-      <div style={{ display: "flex"}}>
-        <img src={symLogo3} alt="Symbol Image" width="50" height="50" />
-        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
-          <p className="m-0">เส้นทางแม่น้ำแต่ละสาย</p> 
+        <div style={{ display: "flex" }}>
+          <img src={symLogo3} alt="Symbol Image" width="100" height="auto" />
+          <div style={{ marginLeft: "100px" }}>
+            {" "}
+            {/* Add margin to separate the image and text */}
+            <p>เส้นทางแม่น้ำแต่ละสาย</p>
+          </div>
         </div>
-      </div>
       </Dialog>
 
+      {/* //Help */}
       <Dialog
-        header= {<h2>Help</h2>}
+        header={
+          <h2
+            style={{
+              background: "linear-gradient(to right, #FFF, rgb(86, 81, 142))", // Adjusted gradient colors
+            }}
+          >
+            Help
+          </h2>
+        }
         visible={helpVisible}
-        style={{ width: "50vw" }}
+        style={{ width: "80vw" }}
         onHide={() => setHelpVisible(false)}
         ref={helpDialogRef} // Attach ref to the Dialog component
       >
-      <div style={{ display: "flex"}}>
-        <img src={homelogo} alt="Symbol Image" width="50" height="50" />
-        <div style={{ marginLeft: "100px" }}> {/* Add margin to separate the image and text */}
-          <p className="m-0">temp...</p>
-        </div>
-      </div>
+        <Carousel
+          value={products}
+          numVisible={1}
+          numScroll={1}
+          responsiveOptions={responsiveOptions}
+          itemTemplate={productTemplate}
+        />
       </Dialog>
     </div>
   );

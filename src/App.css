@@ -18,7 +18,7 @@
  }
   /* Tab component css*/
  .Tabs{
-  width: 75%;
+  width: 80%;
   height: auto;
   min-height: 80%;
   margin: 2rem auto 1rem;
@@ -40,6 +40,11 @@
   /* justify-content: flex-start; */
   max-width: 1500px;
   margin: 0 auto; /* This will center the element horizontally */
+  
+  border: 4px solid #eee;
+  border-radius: 4px;
+  background-color: white;
+  box-sizing: border-box;
 
   /*layer-switcher styles*/
   .layer-switcher {
@@ -273,9 +278,9 @@
 
 p {
   font-size: 20px;
-  font-weight: bold;
-  color: black;
-  font-family: 'Courier New', Courier, monospace;
+  font-weight: unset;
+  color: rgb(0, 0, 0);
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .white-box {
   background-color: rgb(83, 23, 23); /* Set the background color */
@@ -289,6 +294,13 @@ p {
   filter: drop-shadow(0 -6mm 4mm rgb(146, 17, 17));
 }
 .card-bg{
+  padding: 10px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add border radius for rounded corners */
+}
+.card-test-color{
+  
+  background: 'linear-gradient(to right, rgb(223, 232, 184), rgb(86, 81, 142))';
+  background-color: rgb(223, 232, 184); /* Set the background color */
   padding: 10px; /* Adjust padding as needed */
   border-radius: 5px; /* Optional: Add border radius for rounded corners */
 }

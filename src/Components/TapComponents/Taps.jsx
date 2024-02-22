@@ -1,6 +1,6 @@
 import React from "react";
 import OpenLayerComponent from "../MapComponents/OpenLayerComponent";
-import Menu from "./Menu";
+// import Menu from "./Menu";
 
 const Tabs = () => {
 
