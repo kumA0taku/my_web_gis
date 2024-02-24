@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Menubar } from "primereact/menubar";
-import homelogo from "../../assets/gismap3.png"; // Import the image
+import homelogo from "../../assets/gismap2.png"; // Import the image
 import symLogo1 from "../../assets/symbols/bd_th.png"; // Import the image of bd
 import symLogo2 from "../../assets/symbols/point_th.png"; // Import the image of point
 import symLogo3 from "../../assets/symbols/wate_th.png"; // Import the image of water line
@@ -89,7 +89,7 @@ export default function Menu() {
   ];
 
   const start = (
-    <img alt="logo" src={homelogo} width="140" height="auto" className="mr-2" />
+    <img alt="logo" src={homelogo} width="auto" height="55" className="mr-2" />
   );
   const end = [];
 
