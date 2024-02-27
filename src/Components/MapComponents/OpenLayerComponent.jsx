@@ -40,6 +40,8 @@ class CustomZoomToExtent extends ZoomToExtent {
     });
   }
 } 
+
+// focus on "LAYERS"
   useEffect(() => {
     map.current = new Map({
       controls: defaultControls().extend([
