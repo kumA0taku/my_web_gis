@@ -41,7 +41,7 @@ class CustomZoomToExtent extends ZoomToExtent {
   }
 } 
 
-// focus on "LAYERS"
+// focus on "url" and "LAYERS"
   useEffect(() => {
     map.current = new Map({
       controls: defaultControls().extend([
