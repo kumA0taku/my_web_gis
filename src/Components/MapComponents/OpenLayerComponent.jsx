@@ -52,6 +52,7 @@ class CustomZoomToExtent extends ZoomToExtent {
       ]),
       target: mapContainerRef.current,
       layers: [
+        //base map
         new LayerGroup({
           title: "Base maps",
           layers: [
@@ -62,7 +63,6 @@ class CustomZoomToExtent extends ZoomToExtent {
               source: new OSM({}),
             }),
 
-            //ขอบเขตประเทศต่างๆ
             new TileLayer({
               title: "TileWMS",
               type: "base",
@@ -78,14 +78,14 @@ class CustomZoomToExtent extends ZoomToExtent {
           ],
         }),
 
-        /**เครื่องมือ */
+        /**Tools */
         new LayerGroup({
-          title: "เครื่องมือ",
+          title: "Tools",
           fold: "open",
           layers: [
             //ขอบเขตจังหวัดต่างๆ
             new TileLayer({
-              title: "ขอบเขตจังหวัดต่างๆ",
+              title: "Provincial boundary",
               visible: false,
               fold: "open",
               source: new TileWMS({
@@ -99,7 +99,7 @@ class CustomZoomToExtent extends ZoomToExtent {
 
             //hos th
             new TileLayer({
-              title: "สถานพยาบาลในประเทศไทย",
+              title: "Point of Hospital in Thailand",
               visible: false,
               source: new TileWMS({
                 attributions: "@TileWMS",
@@ -111,7 +111,7 @@ class CustomZoomToExtent extends ZoomToExtent {
             }),
             //police th
             new TileLayer({
-              title: "สถานีตำรวจในประเทศไทย",
+              title: "Point of Police Station in Thailand",
               visible: false,
               source: new TileWMS({
                 attributions: "@TileWMS",
@@ -123,7 +123,7 @@ class CustomZoomToExtent extends ZoomToExtent {
             }),
             //river th
             new TileLayer({
-              title: "สายแม่น้ำในประเทศไทย",
+              title: "River",
               visible: false,
               source: new TileWMS({
                 attributions: "@TileWMS",
@@ -136,11 +136,11 @@ class CustomZoomToExtent extends ZoomToExtent {
 
             // region of thailand
             new LayerGroup({
-              title: "ขอบเขตภูมิภาคในประเทศไทย",
+              title: "Region boundary",
               fold: "close",
               layers: [
                 new TileLayer({
-                  title: "ภาคกลาง",
+                  title: "Central",
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
@@ -151,7 +151,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   }),
                 }),
                 new TileLayer({
-                  title: "ภาคตะวันออก",
+                  title: "East",
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
@@ -162,7 +162,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   }),
                 }),
                 new TileLayer({
-                  title: "ภาคเหนือ่",
+                  title: "North",
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
@@ -173,7 +173,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   }),
                 }),
                 new TileLayer({
-                  title: "ภาคอีสาน",
+                  title: "Northeast",
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
@@ -184,7 +184,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   }),
                 }),
                 new TileLayer({
-                  title: "ภาคใต้",
+                  title: "South",
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
@@ -195,7 +195,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   }),
                 }),
                 new TileLayer({
-                  title: "ภาคตะวันตก",
+                  title: "West",
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
