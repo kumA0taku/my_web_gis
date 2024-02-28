@@ -18,6 +18,7 @@ npm install --save-dev vite
 ```
 npm i ol@5.0.0
 npm i ol-layerswitcher
+npm install primereact
 ```
 
 # === to Run project ====
