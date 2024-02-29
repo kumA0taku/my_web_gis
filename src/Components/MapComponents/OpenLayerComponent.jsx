@@ -90,9 +90,9 @@ class CustomZoomToExtent extends ZoomToExtent {
               fold: "open",
               source: new TileWMS({
                 attributions: "@TileWMS",
-                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                 params: {
-                  LAYERS: "web_gis:bd_province",
+                  LAYERS: "gis_data:bd_province",
                 },
               }),
             }),
@@ -103,9 +103,9 @@ class CustomZoomToExtent extends ZoomToExtent {
               visible: false,
               source: new TileWMS({
                 attributions: "@TileWMS",
-                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                 params: {
-                  LAYERS: "web_gis:hos_th",
+                  LAYERS: "gis_data:hos_th",
                 },
               }),
             }),
@@ -115,9 +115,9 @@ class CustomZoomToExtent extends ZoomToExtent {
               visible: false,
               source: new TileWMS({
                 attributions: "@TileWMS",
-                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                 params: {
-                  LAYERS: "web_gis:police_th3",
+                  LAYERS: "gis_data:police_th2",
                 },
               }),
             }),
@@ -127,9 +127,9 @@ class CustomZoomToExtent extends ZoomToExtent {
               visible: false,
               source: new TileWMS({
                 attributions: "@TileWMS",
-                url: "http://localhost:8080/geoserver/web_gis/wms?",
+                url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                 params: {
-                  LAYERS: "web_gis:waterways",
+                  LAYERS: "gis_data:waterways",
                 },
               }),
             }),
@@ -144,9 +144,9 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                     params: {
-                      LAYERS: "web_gis:central",
+                      LAYERS: "gis_data:central",
                     },
                   }),
                 }),
@@ -155,9 +155,9 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                     params: {
-                      LAYERS: "web_gis:east",
+                      LAYERS: "gis_data:east",
                     },
                   }),
                 }),
@@ -166,9 +166,9 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                     params: {
-                      LAYERS: "web_gis:north",
+                      LAYERS: "gis_data:north",
                     },
                   }),
                 }),
@@ -177,9 +177,9 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                     params: {
-                      LAYERS: "web_gis:northeast",
+                      LAYERS: "gis_data:northeast",
                     },
                   }),
                 }),
@@ -188,9 +188,9 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                     params: {
-                      LAYERS: "web_gis:south",
+                      LAYERS: "gis_data:south",
                     },
                   }),
                 }),
@@ -199,9 +199,9 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://localhost:8080/geoserver/web_gis/wms?",
+                    url: "http://3.25.109.42:8080/geoserver/gis_data/wms?",
                     params: {
-                      LAYERS: "web_gis:west",
+                      LAYERS: "gis_data:west",
                     },
                   }),
                 }),
