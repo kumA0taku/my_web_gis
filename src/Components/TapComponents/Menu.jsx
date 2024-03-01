@@ -124,7 +124,7 @@ export default function Menu() {
           <div style={{ marginLeft: "100px" }}>
             {" "}
             {/* Add margin to separate the image and text */}
-            <p>ขอบเขตพื้นที่ต่างๆ</p>
+            <p>ขอบเขตพื้นที่ที่สนใจ</p>
           </div>
         </div>
         <div style={{ display: "flex" }}>
@@ -132,7 +132,7 @@ export default function Menu() {
           <div style={{ marginLeft: "100px" }}>
             {" "}
             {/* Add margin to separate the image and text */}
-            <p>ตำแหน่งพิกัดต่างๆ</p>
+            <p>ตำแหน่งพิกัดของสถานที่</p>
           </div>
         </div>
         <div style={{ display: "flex" }}>
