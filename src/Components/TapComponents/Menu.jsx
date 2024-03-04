@@ -57,7 +57,7 @@ export default function Menu() {
       >
         <div>
           <h3 className="mb-1 ">{product.topic}</h3>
-          <h4 className="mt-0 mb-3">{product.description}</h4>
+          <p className="mt-0 mb-3">{product.description}</p>
         </div>
         <div className="mb-3">
           <img

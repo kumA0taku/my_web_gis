@@ -24,7 +24,7 @@ export const ProductService = {
         id: "1002",
         code: "pp01",
         topic: "Popup",
-        description: "Popup ในการแสดงพิกัดของสถานที่ เมื่อมีการ Click บนแผนที่",
+        description: "Popup จะถูกแสดงขึ้นเมื่อมีการ click บนแผนที่ โดยจะแสดงพิกัด Latitude และ Longitude ของตำแหน่งนั้นๆ ที่เรา click บนแผนที่",
         imagePath:  helpLogo3,
       },
     ];
