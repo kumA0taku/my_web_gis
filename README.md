@@ -24,30 +24,23 @@ npm install primereact
 # === to Run project ====
 ```
 npm run dev
+```
 
+# === For setup in AWS server ===
+```
 //Upgrade Node.js using a version manager like nvm
 nvm install 18
 nvm use 18
 
 //Upgrade npm to the latest version
 npm install -g npm@latest
-```
 
-# === to config Your Github ====
-```
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-```
-
-# === to config CLI root ====
-```
+--- to config CLI root ---
 //for change permission of Folder(or directory)
 sudo chown -R ubuntu:ubuntu /YOUR/DIRECTORY
 
-```
+---  to config Your server in vite.config.js ---
 
-# === to config Your server in vite.config.js ====
-```
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -60,6 +53,12 @@ export default defineConfig({
     port: 5173,
   }
 });
+```
+
+# === to config Your Github ====
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
 ```
 
 # === warning!!!  ====
