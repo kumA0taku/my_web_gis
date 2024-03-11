@@ -9,7 +9,7 @@ import OSM from "ol/source/OSM";
 import LayerGroup from "ol/layer/Group";
 import TileWMS from "ol/source/TileWMS";
 import LayerSwitcher from "ol-layerswitcher";
-import {ZoomToExtent, defaults as defaultControls} from 'ol/control.js';
+import { ZoomToExtent, defaults as defaultControls } from "ol/control.js";
 
 import Overlay from "ol/Overlay"; // Import the Overlay class
 
@@ -26,29 +26,37 @@ const OpenLayerComponent = () => {
   const [lng] = useState(100.6211);
   const [lat] = useState(15.1346);
   const [zoom] = useState(5.5284);
-  
-// Thailand's extent in EPSG:4326
-const thailandExtent4326 = [100.92995795643422, 13.100601172120763, 100.915005900, 13.1050059];// Transform Thailand's extent from EPSG:4326 to EPSG:3857
-const thailandExtent3857 = transformExtent(thailandExtent4326, 'EPSG:4326', 'EPSG:3857');
 
-class CustomZoomToExtent extends ZoomToExtent {
-  constructor(options) {
-    super({
-      extent: options.extent,
-      label: 'H', // Change 'Custom Label' to your desired label
-      tipLabel: options.tipLabel,
-    });
+  // Thailand's extent in EPSG:4326
+  const thailandExtent4326 = [
+    100.92995795643422, 13.100601172120763, 100.9150059, 13.1050059,
+  ]; // Transform Thailand's extent from EPSG:4326 to EPSG:3857
+  const thailandExtent3857 = transformExtent(
+    thailandExtent4326,
+    "EPSG:4326",
+    "EPSG:3857"
+  );
+
+  const geoserver_url = "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?";
+
+  class CustomZoomToExtent extends ZoomToExtent {
+    constructor(options) {
+      super({
+        extent: options.extent,
+        label: "H", // Change 'Custom Label' to your desired label
+        tipLabel: options.tipLabel,
+      });
+    }
   }
-} 
 
-// focus on "url" and "LAYERS"
+  // focus on "url" and "LAYERS"
   useEffect(() => {
     map.current = new Map({
       controls: defaultControls().extend([
         new CustomZoomToExtent({
           extent: thailandExtent3857,
-          tipLabel: 'Zoom to Gistda', // Adjust the tooltip label as needed
-        })
+          tipLabel: "Zoom to Gistda", // Adjust the tooltip label as needed
+        }),
       ]),
       target: mapContainerRef.current,
       layers: [
@@ -90,7 +98,7 @@ class CustomZoomToExtent extends ZoomToExtent {
               fold: "open",
               source: new TileWMS({
                 attributions: "@TileWMS",
-                url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?",
+                url: geoserver_url,
                 params: {
                   LAYERS: "gis_data:bd_province",
                 },
@@ -103,7 +111,7 @@ class CustomZoomToExtent extends ZoomToExtent {
               visible: false,
               source: new TileWMS({
                 attributions: "@TileWMS",
-                url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?",
+                url: geoserver_url,
                 params: {
                   LAYERS: "gis_data:hos_th",
                 },
@@ -115,7 +123,7 @@ class CustomZoomToExtent extends ZoomToExtent {
               visible: false,
               source: new TileWMS({
                 attributions: "@TileWMS",
-                url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?",
+                url: geoserver_url,
                 params: {
                   LAYERS: "gis_data:police_th2",
                 },
@@ -127,7 +135,7 @@ class CustomZoomToExtent extends ZoomToExtent {
               visible: false,
               source: new TileWMS({
                 attributions: "@TileWMS",
-                url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?", //ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com
+                url: geoserver_url, //ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com
                 params: {
                   LAYERS: "gis_data:waterways",
                 },
@@ -144,7 +152,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?",
+                    url: geoserver_url,
                     params: {
                       LAYERS: "gis_data:central",
                     },
@@ -155,7 +163,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?",
+                    url: geoserver_url,
                     params: {
                       LAYERS: "gis_data:east",
                     },
@@ -166,7 +174,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?",
+                    url: geoserver_url,
                     params: {
                       LAYERS: "gis_data:north",
                     },
@@ -177,7 +185,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?",
+                    url: geoserver_url,
                     params: {
                       LAYERS: "gis_data:northeast",
                     },
@@ -188,7 +196,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?",
+                    url: geoserver_url,
                     params: {
                       LAYERS: "gis_data:south",
                     },
@@ -199,7 +207,7 @@ class CustomZoomToExtent extends ZoomToExtent {
                   visible: false,
                   source: new TileWMS({
                     attributions: "@TileWMS",
-                    url: "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?",
+                    url: geoserver_url,
                     params: {
                       LAYERS: "gis_data:west",
                     },
