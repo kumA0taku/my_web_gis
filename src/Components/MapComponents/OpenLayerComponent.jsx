@@ -37,7 +37,8 @@ const OpenLayerComponent = () => {
     "EPSG:3857"
   );
 
-  const geoserver_url = "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?";
+  // const geoserver_url = "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?";
+  const geoserver_url = "http://localhost:8080/geoserver/web_gis/wms?";
 
   class CustomZoomToExtent extends ZoomToExtent {
     constructor(options) {
