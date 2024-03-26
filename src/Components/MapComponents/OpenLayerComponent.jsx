@@ -37,7 +37,7 @@ const OpenLayerComponent = () => {
     "EPSG:3857"
   );
 
-  // const geoserver_url = "http://ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com:8080/geoserver/gis_data/wms?";
+  // can change by your Workspace name are you create at your PC
   const geoserver_url = "http://localhost:8080/geoserver/web_gis/wms?";
 
   class CustomZoomToExtent extends ZoomToExtent {
@@ -101,7 +101,7 @@ const OpenLayerComponent = () => {
                 attributions: "@TileWMS",
                 url: geoserver_url,
                 params: {
-                  LAYERS: "gis_data:bd_province",
+                  LAYERS: "gis_data:bd_province", //change it by yourself
                 },
               }),
             }),
