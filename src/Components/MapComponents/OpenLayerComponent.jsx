@@ -101,7 +101,7 @@ const OpenLayerComponent = () => {
                 attributions: "@TileWMS",
                 url: geoserver_url,
                 params: {
-                  LAYERS: "gis_data:bd_province", //change it by yourself
+                  LAYERS: "web_gis:bd_province", //change it by yourself
                 },
               }),
             }),
@@ -114,7 +114,7 @@ const OpenLayerComponent = () => {
                 attributions: "@TileWMS",
                 url: geoserver_url,
                 params: {
-                  LAYERS: "gis_data:hos_th",
+                  LAYERS: "web_gis:hos_th",
                 },
               }),
             }),
@@ -126,7 +126,7 @@ const OpenLayerComponent = () => {
                 attributions: "@TileWMS",
                 url: geoserver_url,
                 params: {
-                  LAYERS: "gis_data:police_th2",
+                  LAYERS: "web_gis:police_merge",
                 },
               }),
             }),
@@ -138,7 +138,7 @@ const OpenLayerComponent = () => {
                 attributions: "@TileWMS",
                 url: geoserver_url, //ec2-3-25-92-36.ap-southeast-2.compute.amazonaws.com
                 params: {
-                  LAYERS: "gis_data:waterways",
+                  LAYERS: "web_gis:waterways",
                 },
               }),
             }),
@@ -155,7 +155,7 @@ const OpenLayerComponent = () => {
                     attributions: "@TileWMS",
                     url: geoserver_url,
                     params: {
-                      LAYERS: "gis_data:central",
+                      LAYERS: "web_gis:central",
                     },
                   }),
                 }),
@@ -166,7 +166,7 @@ const OpenLayerComponent = () => {
                     attributions: "@TileWMS",
                     url: geoserver_url,
                     params: {
-                      LAYERS: "gis_data:east",
+                      LAYERS: "web_gis:east",
                     },
                   }),
                 }),
@@ -177,7 +177,7 @@ const OpenLayerComponent = () => {
                     attributions: "@TileWMS",
                     url: geoserver_url,
                     params: {
-                      LAYERS: "gis_data:north",
+                      LAYERS: "web_gis:north",
                     },
                   }),
                 }),
@@ -188,7 +188,7 @@ const OpenLayerComponent = () => {
                     attributions: "@TileWMS",
                     url: geoserver_url,
                     params: {
-                      LAYERS: "gis_data:northeast",
+                      LAYERS: "web_gis:northeast",
                     },
                   }),
                 }),
@@ -199,7 +199,7 @@ const OpenLayerComponent = () => {
                     attributions: "@TileWMS",
                     url: geoserver_url,
                     params: {
-                      LAYERS: "gis_data:south",
+                      LAYERS: "web_gis:south",
                     },
                   }),
                 }),
@@ -210,7 +210,7 @@ const OpenLayerComponent = () => {
                     attributions: "@TileWMS",
                     url: geoserver_url,
                     params: {
-                      LAYERS: "gis_data:west",
+                      LAYERS: "web_gis:west",
                     },
                   }),
                 }),
