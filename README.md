@@ -27,17 +27,22 @@ npm run dev
 ```
 
 # === For setup in AWS server ===
+---Upgrade Node.js using a version manager like nvm---
 ```
-//Upgrade Node.js using a version manager like nvm
 nvm install 18
 nvm use 18
+```
 
-//Upgrade npm to the latest version
+---Upgrade npm to the latest version---
+```
 npm install -g npm@latest
+```
 
 --- to config CLI root ---
-//for change permission of Folder(or directory)
+---for change permission of Folder(or directory)---
+```
 sudo chown -R ubuntu:ubuntu /YOUR/DIRECTORY
+```
 
 ---  to config Your server in vite.config.js ---
 
@@ -64,5 +69,5 @@ git config --global user.name "Your Name"
 
 # === warning!!!  ====
 ```
-if data don't show on map, let check your Geoserver
+if data of Shapefile don't show on map, let check your Geoserver
 ```
