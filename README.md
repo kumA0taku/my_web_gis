@@ -21,6 +21,12 @@ npm i ol-layerswitcher
 npm install primereact
 ```
 
+# === the example Shapefile to insert to your Database with they reference. ===
+
+Link:
+
+- https://github.com/kumA0taku/my_web_gis_shp.git
+
 # === to Run project ====
 ```
 npm run dev
