@@ -3,8 +3,8 @@ import helpLogo1 from "../assets/help/p1.png"; // Import the image of bd
 import helpLogo2 from "../assets/help/p2.png"; // Import the image of point
 import helpLogo3 from "../assets/help/p3.png"; // Import the image of water line
 
-export const ProductService = {
-  getProductsData() {
+export const slicePageService = {
+  getPageData() {
     return [
       {
         id: "1000",
@@ -30,23 +30,23 @@ export const ProductService = {
     ];
   },
 
-  getProductsMini() {
-    return Promise.resolve(this.getProductsData().slice(0, 5));
+  // getProductsMini() {
+  //   return Promise.resolve(this.getPageData().slice(0, 5));
+  // },
+
+  getPagesSmall() {
+    return Promise.resolve(this.getPageData().slice(0, 3));
   },
 
-  getProductsSmall() {
-    return Promise.resolve(this.getProductsData().slice(0, 3));
-  },
+  // getProducts() {
+  //   return Promise.resolve(this.getPageData());
+  // },
 
-  getProducts() {
-    return Promise.resolve(this.getProductsData());
-  },
+  // getProductsWithOrdersSmall() {
+  //   return Promise.resolve(this.getProductsWithOrdersData().slice(0, 10));
+  // },
 
-  getProductsWithOrdersSmall() {
-    return Promise.resolve(this.getProductsWithOrdersData().slice(0, 10));
-  },
-
-  getProductsWithOrders() {
-    return Promise.resolve(this.getProductsWithOrdersData());
-  },
+  // getProductsWithOrders() {
+  //   return Promise.resolve(this.getProductsWithOrdersData());
+  // },
 };

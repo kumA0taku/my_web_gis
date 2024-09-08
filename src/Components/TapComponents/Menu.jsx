@@ -6,7 +6,7 @@ import symLogo2 from "../../assets/symbols/point_th.png"; // Import the image of
 import symLogo3 from "../../assets/symbols/wate_th.png"; // Import the image of water line
 import { Dialog } from "primereact/dialog";
 import { Carousel } from "primereact/carousel";
-import { ProductService } from "../../service/ProductService";
+import { slicePageService } from "../../service/ProductService";
 
 // Import styling
 import "../../App.css"; // Assuming you have a CSS file named App.css for styling
@@ -44,25 +44,25 @@ export default function Menu() {
   ];
 
   useEffect(() => {
-    ProductService.getProductsSmall().then((data) =>
-      setProducts(data.slice(0, 3))
-    );
+    slicePageService
+      .getPagesSmall()
+      .then((data) => setProducts(data.slice(0, 3)));
   }, []);
 
-  const productTemplate = (product) => {
+  const pageTemplate = (_page) => {
     return (
       <div
         className="border-1 surface-border border-round m-2 text-center py-5 px-3 "
         style={{ justifyContent: "center" }}
       >
         <div>
-          <h3 className="mb-1 ">{product.topic}</h3>
-          <p className="mt-0 mb-3">{product.description}</p>
+          <h3 className="mb-1 ">{_page.topic}</h3>
+          <p className="mt-0 mb-3">{_page.description}</p>
         </div>
         <div className="mb-3">
           <img
-            src={`${product.imagePath}`}
-            alt={product.topic}
+            src={`${_page.imagePath}`}
+            alt={_page.topic}
             className="w-6 shadow-2 autoFitImage"
             style={{ objectFit: "auto" }} // Add this style
           />
@@ -166,7 +166,7 @@ export default function Menu() {
           numVisible={1}
           numScroll={1}
           responsiveOptions={responsiveOptions}
-          itemTemplate={productTemplate}
+          itemTemplate={pageTemplate}
         />
       </Dialog>
     </div>
